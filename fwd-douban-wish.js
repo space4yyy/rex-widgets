@@ -3,7 +3,7 @@ var WidgetMetadata = {
     title: "豆瓣",
     description: "豆瓣",
     author: "Space4",
-    site: "https://",
+    site: "https://github.com/space4yyy",
     version: "1.0.0",
     requiredVersion: "0.0.1",
     modules: [
