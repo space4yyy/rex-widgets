@@ -4,7 +4,7 @@ WidgetMetadata = {
     description: "按从入园开始的建议浏览动线，分主题园区整理相关影视作品",
     author: "Space4",
     site: "https://github.com/space4yyy",
-    version: "1.2.0",
+    version: "1.2.1",
     requiredVersion: "0.0.1",
     modules: [
         {
