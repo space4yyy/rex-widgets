@@ -4,9 +4,18 @@ WidgetMetadata = {
     description: "按从入园开始的建议浏览动线，分主题园区整理相关影视作品",
     author: "Space4",
     site: "https://github.com/space4yyy",
-    version: "1.4.2",
+    version: "1.5.0",
     requiredVersion: "0.0.1",
     modules: [
+        {
+            id: "disneyRoaming",
+            title: "🎬｜迪士尼漫游",
+            description: "每次随机抽取10部迪士尼相关影视作品",
+            requiresWebView: false,
+            functionName: "loadDisneyRoaming",
+            cacheDuration: 0,
+            params: [],
+        },
         {
             id: "mickeyAvenue",
             title: "🎠｜米奇大街",
@@ -224,6 +233,33 @@ var CASTLE_LIGHT_SHOW_ITEMS = [
     tmdbItem(1022796, "星愿"),
 ];
 
+function buildDisneyRoamingPool() {
+    var source = [].concat(
+        MICKEY_AVENUE_ITEMS,
+        GARDENS_OF_IMAGINATION_ITEMS,
+        TOMORROWLAND_ITEMS,
+        TOY_STORY_LAND_ITEMS,
+        FANTASYLAND_ITEMS,
+        ZOOTOPIA_ITEMS,
+        TREASURE_COVE_ITEMS,
+        ADVENTURE_ISLE_ITEMS,
+        HALLOWEEN_VILLAINS_ITEMS,
+        CASTLE_LIGHT_SHOW_ITEMS
+    );
+    var seen = {};
+    var result = [];
+    for (var i = 0; i < source.length; i++) {
+        var item = source[i];
+        if (seen[item.id]) {
+            continue;
+        }
+        seen[item.id] = true;
+        result.push(item);
+    }
+    return result;
+}
+
+var DISNEY_ROAMING_POOL = buildDisneyRoamingPool();
 var TMDB_IMAGE_CACHE_PREFIX = "space4.shdr.tmdb-images.v1:";
 
 function itemWithImages(item, images) {
@@ -276,6 +312,21 @@ async function loadItemsWithImages(items) {
         result.push(itemWithImages(item, images));
     }
     return result;
+}
+
+function randomItems(items, count) {
+    var pool = items.slice();
+    for (var i = pool.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = pool[i];
+        pool[i] = pool[j];
+        pool[j] = temp;
+    }
+    return pool.slice(0, Math.min(count, pool.length));
+}
+
+async function loadDisneyRoaming(params = {}) {
+    return loadItemsWithImages(randomItems(DISNEY_ROAMING_POOL, 10));
 }
 
 async function loadMickeyAvenue(params = {}) {
