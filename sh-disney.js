@@ -9,7 +9,7 @@ WidgetMetadata = {
     modules: [
         {
             id: "mickeyAvenue",
-            title: "01｜米奇大街",
+            title: "🎠｜米奇大街",
             description: "入园第一站：米奇与朋友们",
             requiresWebView: false,
             functionName: "loadMickeyAvenue",
@@ -18,7 +18,7 @@ WidgetMetadata = {
         },
         {
             id: "gardensOfImagination",
-            title: "02｜奇想花园",
+            title: "🌳｜奇想花园",
             description: "中央广场：幻想曲、小飞象与漫威",
             requiresWebView: false,
             functionName: "loadGardensOfImagination",
@@ -27,7 +27,7 @@ WidgetMetadata = {
         },
         {
             id: "tomorrowland",
-            title: "03｜明日世界",
+            title: "🚀｜明日世界",
             description: "科幻、巴斯光年、史迪奇与皮克斯奇旅",
             requiresWebView: false,
             functionName: "loadTomorrowland",
@@ -36,7 +36,7 @@ WidgetMetadata = {
         },
         {
             id: "toyStoryLand",
-            title: "04｜迪士尼·皮克斯玩具总动员",
+            title: "🧸｜迪士尼·皮克斯玩具总动员",
             description: "玩具总动员系列及特别篇",
             requiresWebView: false,
             functionName: "loadToyStoryLand",
@@ -45,7 +45,7 @@ WidgetMetadata = {
         },
         {
             id: "fantasyland",
-            title: "05｜梦幻世界",
+            title: "🏰｜梦幻世界",
             description: "奇幻童话城堡、迪士尼公主与经典童话",
             requiresWebView: false,
             functionName: "loadFantasyland",
@@ -54,7 +54,7 @@ WidgetMetadata = {
         },
         {
             id: "zootopia",
-            title: "06｜疯狂动物城",
+            title: "🐰｜疯狂动物城",
             description: "全球首个疯狂动物城主题园区相关影视作品",
             requiresWebView: false,
             functionName: "loadZootopia",
@@ -63,7 +63,7 @@ WidgetMetadata = {
         },
         {
             id: "treasureCove",
-            title: "07｜宝藏湾",
+            title: "🏴‍☠️｜宝藏湾",
             description: "加勒比海盗系列",
             requiresWebView: false,
             functionName: "loadTreasureCove",
@@ -72,7 +72,7 @@ WidgetMetadata = {
         },
         {
             id: "adventureIsle",
-            title: "08｜探险岛",
+            title: "🌴｜探险岛",
             description: "飞屋环游记与丛林探险题材",
             requiresWebView: false,
             functionName: "loadAdventureIsle",
