@@ -4,7 +4,7 @@ WidgetMetadata = {
     description: "按从入园开始的建议浏览动线，分主题园区整理相关影视作品",
     author: "Space4",
     site: "https://github.com/space4yyy",
-    version: "1.5.0",
+    version: "1.5.1",
     requiredVersion: "0.0.1",
     modules: [
         {
@@ -112,7 +112,7 @@ WidgetMetadata = {
 function tmdbItem(id, title, mediaType) {
     var resolvedMediaType = mediaType || "movie";
     return {
-        id: `${resolvedMediaType}.${id}`,
+        id: id,
         type: "tmdb",
         mediaType: resolvedMediaType,
         title: title,
@@ -260,7 +260,7 @@ function buildDisneyRoamingPool() {
 }
 
 var DISNEY_ROAMING_POOL = buildDisneyRoamingPool();
-var TMDB_IMAGE_CACHE_PREFIX = "space4.shdr.tmdb-images.v1:";
+var TMDB_IMAGE_CACHE_PREFIX = "space4.shdr.tmdb-images.v2:";
 
 function itemWithImages(item, images) {
     var result = Object.assign({}, item);
