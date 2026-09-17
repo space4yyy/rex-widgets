@@ -4,7 +4,7 @@ WidgetMetadata = {
     description: "按从入园开始的建议浏览动线，分主题园区整理相关影视作品",
     author: "Space4",
     site: "https://github.com/space4yyy",
-    version: "1.4.0",
+    version: "1.4.1",
     requiredVersion: "0.0.1",
     modules: [
         {
@@ -101,10 +101,11 @@ WidgetMetadata = {
 };
 
 function tmdbItem(id, title, mediaType) {
+    var resolvedMediaType = mediaType || "movie";
     return {
-        id: id,
+        id: `${resolvedMediaType}.${id}`,
         type: "tmdb",
-        mediaType: mediaType || "movie",
+        mediaType: resolvedMediaType,
         title: title,
     };
 }
