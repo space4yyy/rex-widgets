@@ -4,7 +4,7 @@ WidgetMetadata = {
     description: "按从入园开始的建议浏览动线，分主题园区整理相关影视作品",
     author: "Space4",
     site: "https://github.com/space4yyy",
-    version: "1.2.1",
+    version: "1.4.0",
     requiredVersion: "0.0.1",
     modules: [
         {
@@ -28,7 +28,7 @@ WidgetMetadata = {
         {
             id: "tomorrowland",
             title: "🚀｜明日世界",
-            description: "科幻、巴斯光年、史迪奇与皮克斯奇旅",
+            description: "科幻、巴斯光年、复仇者联盟、史迪奇与皮克斯奇旅",
             requiresWebView: false,
             functionName: "loadTomorrowland",
             cacheDuration: 86400,
@@ -73,9 +73,27 @@ WidgetMetadata = {
         {
             id: "adventureIsle",
             title: "🌴｜探险岛",
-            description: "飞屋环游记与丛林探险题材",
+            description: "飞屋环游记、海底探险与丛林探险题材",
             requiresWebView: false,
             functionName: "loadAdventureIsle",
+            cacheDuration: 86400,
+            params: [],
+        },
+        {
+            id: "halloweenVillains",
+            title: "🎃｜万圣节反派",
+            description: "唐老鸭万圣夜反派巡游相关影视，年度阵容以官方公告为准",
+            requiresWebView: false,
+            functionName: "loadHalloweenVillains",
+            cacheDuration: 86400,
+            params: [],
+        },
+        {
+            id: "castleLightShow",
+            title: "🏰｜城堡灯光秀",
+            description: "按2026年《奇妙之心》城堡秀影片登场顺序整理，末尾附《星愿》幻影秀新篇章",
+            requiresWebView: false,
+            functionName: "loadCastleLightShow",
             cacheDuration: 86400,
             params: [],
         },
@@ -116,7 +134,9 @@ var TOMORROWLAND_ITEMS = [
     tmdbItem(97, "创"),
     tmdbItem(20526, "创：战纪"),
     tmdbItem(11544, "星际宝贝"),
+    tmdbItem(862, "玩具总动员"),
     tmdbItem(718789, "光年正传"),
+    tmdbItem(24428, "复仇者联盟"),
     // “皮克斯奇旅”官方公布的七部影片。
     tmdbItem(150540, "头脑特工队"),
     tmdbItem(585, "怪兽电力公司"),
@@ -170,9 +190,37 @@ var TREASURE_COVE_ITEMS = [
 
 var ADVENTURE_ISLE_ITEMS = [
     tmdbItem(14160, "飞屋环游记"),
+    tmdbItem(12, "海底总动员"),
     tmdbItem(37135, "泰山"),
     tmdbItem(9325, "森林王子"),
     tmdbItem(8587, "狮子王"),
+];
+
+// 近年“唐老鸭万圣夜反派巡游”的核心反派，以及当前官方反派角色名单中的相关作品。
+var HALLOWEEN_VILLAINS_ITEMS = [
+    tmdbItem(11970, "大力士"),
+    tmdbItem(10882, "睡美人"),
+    tmdbItem(10198, "公主与青蛙"),
+    tmdbItem(12092, "爱丽丝梦游仙境（1951）"),
+    tmdbItem(38757, "魔发奇缘"),
+    tmdbItem(408, "白雪公主"),
+    tmdbItem(12230, "101忠狗"),
+    tmdbItem(10693, "小飞侠彼得潘"),
+    tmdbItem(10144, "小美人鱼"),
+];
+
+// 按2026年“奇妙之心”城堡秀官方公布的影片顺序排列；《星愿》为同期幻影秀新增篇章。
+var CASTLE_LIGHT_SHOW_ITEMS = [
+    tmdbItem(11224, "灰姑娘"),
+    tmdbItem(51162, "小熊维尼"),
+    tmdbItem(38757, "魔发奇缘"),
+    tmdbItem(10674, "花木兰"),
+    tmdbItem(11970, "大力士"),
+    tmdbItem(109445, "冰雪奇缘"),
+    tmdbItem(862, "玩具总动员"),
+    tmdbItem(354912, "寻梦环游记"),
+    tmdbItem(508947, "青春变形记"),
+    tmdbItem(1022796, "星愿"),
 ];
 
 async function loadMickeyAvenue(params = {}) {
@@ -205,4 +253,12 @@ async function loadTreasureCove(params = {}) {
 
 async function loadAdventureIsle(params = {}) {
     return ADVENTURE_ISLE_ITEMS;
+}
+
+async function loadHalloweenVillains(params = {}) {
+    return HALLOWEEN_VILLAINS_ITEMS;
+}
+
+async function loadCastleLightShow(params = {}) {
+    return CASTLE_LIGHT_SHOW_ITEMS;
 }
