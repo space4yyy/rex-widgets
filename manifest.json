@@ -1,7 +1,7 @@
 {
   "title": "Space4 Widgets",
   "description": "Space4 模块汇总",
-  "iconurl": "https://assets.rexnow.tv/scripts/rex-icon.png",
+  "icon": "https://assets.rexnow.tv/scripts/rex-icon.png",
   "widgets": [
     {
       "id": "space4.shdr",
