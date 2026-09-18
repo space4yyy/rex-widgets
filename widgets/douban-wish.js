@@ -1,23 +1,23 @@
 var WidgetMetadata = {
-    id: "space.readonly.douban",
-    title: "豆瓣",
-    description: "豆瓣",
+    id: "space4.douban",
+    title: "豆瓣想看",
+    description: "读取豆瓣用户的想看电影列表",
     author: "Space4",
-    site: "https://github.com/space4yyy",
-    version: "1.0.0",
+    site: "https://github.com/space4yyy/rex-widgets",
+    version: "1.0.2",
     requiredVersion: "0.0.1",
     modules: [
         {
             title: "豆瓣 - 我的想看",
-            description: "豆瓣 - 我的想看",
+            description: "读取豆瓣用户的想看电影列表",
             requiresWebView: false,
             functionName: "loadWish",
             params: [
                 {
                     name: "userId",
-                    title: "豆瓣用户id",
+                    title: "豆瓣用户 ID",
                     type: "input",
-                    description: "豆瓣用户id",
+                    description: "豆瓣用户 ID",
                 },
                 {
                     name: "start",

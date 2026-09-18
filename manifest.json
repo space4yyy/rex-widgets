@@ -1,0 +1,24 @@
+{
+  "title": "Space4 Widgets",
+  "description": "Space4 模块汇总",
+  "widgets": [
+    {
+      "id": "space4.shdr",
+      "title": "上海迪士尼度假区片单",
+      "description": "按从入园开始的建议浏览动线，分主题园区整理相关影视作品",
+      "requiredVersion": "0.0.1",
+      "version": "1.5.3",
+      "author": "Space4",
+      "url": "https://raw.githubusercontent.com/space4yyy/rex-widgets/main/widgets/shdr.js"
+    },
+    {
+      "id": "space4.douban",
+      "title": "豆瓣想看",
+      "description": "读取豆瓣用户的想看电影列表",
+      "requiredVersion": "0.0.1",
+      "version": "1.0.2",
+      "author": "Space4",
+      "url": "https://raw.githubusercontent.com/space4yyy/rex-widgets/main/widgets/douban-wish.js"
+    }
+  ]
+}
