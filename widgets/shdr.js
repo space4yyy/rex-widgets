@@ -4,7 +4,7 @@ WidgetMetadata = {
     description: "按从入园开始的建议浏览动线，分主题园区整理相关影视作品",
     author: "Space4",
     site: "https://github.com/space4yyy/rex-widgets",
-    version: "1.5.4",
+    version: "1.5.5",
     requiredVersion: "0.0.1",
     modules: [
         {
@@ -260,6 +260,59 @@ function buildDisneyRoamingPool() {
 }
 
 var DISNEY_ROAMING_POOL = buildDisneyRoamingPool();
+var TMDB_IMAGE_CACHE_PREFIX = "space4.shdr.tmdb-images.v2:";
+
+function itemWithImages(item, images) {
+    var result = Object.assign({}, item);
+    if (images.posterPath) {
+        result.posterPath = images.posterPath;
+    }
+    if (images.backdropPath) {
+        result.backdropPath = images.backdropPath;
+    }
+    return result;
+}
+
+async function loadItemsWithImages(items) {
+    if (!Widget.tmdb || typeof Widget.tmdb.get !== "function") {
+        return items;
+    }
+
+    var result = [];
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        var cacheKey = TMDB_IMAGE_CACHE_PREFIX + item.id;
+        var cached = null;
+
+        if (Widget.storage && typeof Widget.storage.get === "function") {
+            cached = Widget.storage.get(cacheKey);
+        }
+        if (cached && cached.resolved) {
+            result.push(itemWithImages(item, cached));
+            continue;
+        }
+
+        var tmdbId = String(item.id).replace(/^(movie|tv)\./, "");
+        var images = { resolved: true };
+        var resolved = false;
+        try {
+            var detail = await Widget.tmdb.get(item.mediaType + "/" + tmdbId, {
+                params: { language: "zh-CN" },
+            });
+            images.posterPath = detail && detail.poster_path;
+            images.backdropPath = detail && detail.backdrop_path;
+            resolved = true;
+        } catch (error) {
+            console.error("获取 TMDB 封面失败:", item.id, error);
+        }
+
+        if (resolved && Widget.storage && typeof Widget.storage.set === "function") {
+            Widget.storage.set(cacheKey, images);
+        }
+        result.push(itemWithImages(item, images));
+    }
+    return result;
+}
 
 function randomItems(items, count) {
     var pool = items.slice();
@@ -273,45 +326,45 @@ function randomItems(items, count) {
 }
 
 async function loadDisneyRoaming(params = {}) {
-    return randomItems(DISNEY_ROAMING_POOL, 10);
+    return loadItemsWithImages(randomItems(DISNEY_ROAMING_POOL, 10));
 }
 
 async function loadMickeyAvenue(params = {}) {
-    return MICKEY_AVENUE_ITEMS;
+    return loadItemsWithImages(MICKEY_AVENUE_ITEMS);
 }
 
 async function loadGardensOfImagination(params = {}) {
-    return GARDENS_OF_IMAGINATION_ITEMS;
+    return loadItemsWithImages(GARDENS_OF_IMAGINATION_ITEMS);
 }
 
 async function loadTomorrowland(params = {}) {
-    return TOMORROWLAND_ITEMS;
+    return loadItemsWithImages(TOMORROWLAND_ITEMS);
 }
 
 async function loadToyStoryLand(params = {}) {
-    return TOY_STORY_LAND_ITEMS;
+    return loadItemsWithImages(TOY_STORY_LAND_ITEMS);
 }
 
 async function loadFantasyland(params = {}) {
-    return FANTASYLAND_ITEMS;
+    return loadItemsWithImages(FANTASYLAND_ITEMS);
 }
 
 async function loadZootopia(params = {}) {
-    return ZOOTOPIA_ITEMS;
+    return loadItemsWithImages(ZOOTOPIA_ITEMS);
 }
 
 async function loadTreasureCove(params = {}) {
-    return TREASURE_COVE_ITEMS;
+    return loadItemsWithImages(TREASURE_COVE_ITEMS);
 }
 
 async function loadAdventureIsle(params = {}) {
-    return ADVENTURE_ISLE_ITEMS;
+    return loadItemsWithImages(ADVENTURE_ISLE_ITEMS);
 }
 
 async function loadHalloweenVillains(params = {}) {
-    return HALLOWEEN_VILLAINS_ITEMS;
+    return loadItemsWithImages(HALLOWEEN_VILLAINS_ITEMS);
 }
 
 async function loadCastleLightShow(params = {}) {
-    return CASTLE_LIGHT_SHOW_ITEMS;
+    return loadItemsWithImages(CASTLE_LIGHT_SHOW_ITEMS);
 }
